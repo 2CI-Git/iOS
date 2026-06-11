@@ -57,7 +57,7 @@ struct ContentView: View {
                     Label("Cohort", systemImage: "circle.hexagongrid.fill")
                 }
 
-            ProfileView(member: currentMember, preferences: preferences)
+            ProfileView(member: currentMember, preferences: $preferences)
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle.fill")
                 }

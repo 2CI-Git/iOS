@@ -2,7 +2,8 @@ import SwiftUI
 
 struct ProfileView: View {
     let member: Member
-    let preferences: [NotificationPreference]
+    @Binding var preferences: [NotificationPreference]
+    @State private var isShowingSettings = false
 
     var body: some View {
         NavigationStack {
@@ -76,7 +77,58 @@ struct ProfileView: View {
             }
             .background(AppTheme.pageBackground)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isShowingSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                    }
+                    .accessibilityLabel("Profile settings")
+                }
+            }
+            .sheet(isPresented: $isShowingSettings) {
+                ProfileSettingsView(preferences: $preferences)
+            }
         }
         .background(AppTheme.navy.ignoresSafeArea())
+    }
+}
+
+private struct ProfileSettingsView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Binding var preferences: [NotificationPreference]
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section {
+                    ForEach($preferences) { $preference in
+                        Toggle(isOn: $preference.isEnabled) {
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(preference.title)
+                                    .font(.subheadline.weight(.semibold))
+
+                                Text(preference.channels)
+                                    .font(.caption)
+                                    .foregroundStyle(AppTheme.muted)
+                            }
+                        }
+                        .tint(AppTheme.navy)
+                    }
+                } header: {
+                    Text("Notifications")
+                }
+            }
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
     }
 }
