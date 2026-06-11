@@ -11,6 +11,17 @@
 		1A2B3C4D5E6F708192A0B002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A002 /* ContentView.swift */; };
 		1A2B3C4D5E6F708192A0B003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A003 /* Assets.xcassets */; };
 		1A2B3C4D5E6F708192A0B004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A006 /* LaunchScreen.storyboard */; };
+		1A2B3C4D5E6F708192A0B005 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A007 /* AppTheme.swift */; };
+		1A2B3C4D5E6F708192A0B006 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A008 /* Models.swift */; };
+		1A2B3C4D5E6F708192A0B007 /* MockServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A009 /* MockServices.swift */; };
+		1A2B3C4D5E6F708192A0B008 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A010 /* Components.swift */; };
+		1A2B3C4D5E6F708192A0B009 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A011 /* FeedView.swift */; };
+		1A2B3C4D5E6F708192A0B010 /* DirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A012 /* DirectoryView.swift */; };
+		1A2B3C4D5E6F708192A0B011 /* CohortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A013 /* CohortView.swift */; };
+		1A2B3C4D5E6F708192A0B012 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A014 /* ProfileView.swift */; };
+		1A2B3C4D5E6F708192A0B013 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A015 /* SplashView.swift */; };
+		1A2B3C4D5E6F708192A0B014 /* FeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A016 /* FeedDetailView.swift */; };
+		1A2B3C4D5E6F708192A0B015 /* ComposePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A017 /* ComposePostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +31,17 @@
 		1A2B3C4D5E6F708192A0A004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A0A005 /* TwoCi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoCi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2B3C4D5E6F708192A0A006 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A007 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A008 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A009 /* MockServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServices.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A010 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A011 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A012 /* DirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A013 /* CohortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CohortView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A014 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A015 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A016 /* FeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A017 /* ComposePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposePostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +68,17 @@
 			children = (
 				1A2B3C4D5E6F708192A0A001 /* TwoCiApp.swift */,
 				1A2B3C4D5E6F708192A0A002 /* ContentView.swift */,
+				1A2B3C4D5E6F708192A0A007 /* AppTheme.swift */,
+				1A2B3C4D5E6F708192A0A008 /* Models.swift */,
+				1A2B3C4D5E6F708192A0A009 /* MockServices.swift */,
+				1A2B3C4D5E6F708192A0A010 /* Components.swift */,
+				1A2B3C4D5E6F708192A0A011 /* FeedView.swift */,
+				1A2B3C4D5E6F708192A0A016 /* FeedDetailView.swift */,
+				1A2B3C4D5E6F708192A0A017 /* ComposePostView.swift */,
+				1A2B3C4D5E6F708192A0A012 /* DirectoryView.swift */,
+				1A2B3C4D5E6F708192A0A013 /* CohortView.swift */,
+				1A2B3C4D5E6F708192A0A014 /* ProfileView.swift */,
+				1A2B3C4D5E6F708192A0A015 /* SplashView.swift */,
 				1A2B3C4D5E6F708192A0A006 /* LaunchScreen.storyboard */,
 				1A2B3C4D5E6F708192A0A003 /* Assets.xcassets */,
 				1A2B3C4D5E6F708192A0A004 /* Info.plist */,
@@ -133,6 +166,17 @@
 			files = (
 				1A2B3C4D5E6F708192A0B001 /* TwoCiApp.swift in Sources */,
 				1A2B3C4D5E6F708192A0B002 /* ContentView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B005 /* AppTheme.swift in Sources */,
+				1A2B3C4D5E6F708192A0B006 /* Models.swift in Sources */,
+				1A2B3C4D5E6F708192A0B007 /* MockServices.swift in Sources */,
+				1A2B3C4D5E6F708192A0B008 /* Components.swift in Sources */,
+				1A2B3C4D5E6F708192A0B009 /* FeedView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B014 /* FeedDetailView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B015 /* ComposePostView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B010 /* DirectoryView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B011 /* CohortView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B012 /* ProfileView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B013 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

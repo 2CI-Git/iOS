@@ -1,17 +1,42 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        ZStack {
-            Color(red: 0.094, green: 0.137, blue: 0.247)
-                .ignoresSafeArea()
+    private let store: MockDataStore
+    @State private var feedPosts: [FeedPost]
 
-            Image("SplashWordmark")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 155, height: 66)
+    init() {
+        let store = MockDataStore()
+        self.store = store
+        _feedPosts = State(initialValue: store.posts())
+    }
+
+    var body: some View {
+        TabView {
+            FeedView(posts: $feedPosts, currentMember: store.currentMember())
+                .tabItem {
+                    Label("Feed", systemImage: "house.fill")
+                }
+
+            DirectoryView(members: store.members())
+                .tabItem {
+                    Label("Directory", systemImage: "person.2.fill")
+                }
+
+            CohortView(cohort: store.currentCohort())
+                .tabItem {
+                    Label("Cohort", systemImage: "circle.hexagongrid.fill")
+                }
+
+            ProfileView(
+                member: store.currentMember(),
+                preferences: store.notificationPreferences()
+            )
+            .tabItem {
+                Label("Profile", systemImage: "person.crop.circle.fill")
+            }
         }
-        .preferredColorScheme(.dark)
+        .tint(AppTheme.navy)
+        .preferredColorScheme(.light)
     }
 }
 

@@ -1,0 +1,82 @@
+import SwiftUI
+
+struct ProfileView: View {
+    let member: Member
+    let preferences: [NotificationPreference]
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    BrandHeader(
+                        title: "Your 2CI",
+                        subtitle: "The profile layer LinkedIn does not know how to ask for."
+                    )
+
+                    VStack(alignment: .leading, spacing: 14) {
+                        HStack(spacing: 16) {
+                            AvatarView(member: member, size: 72)
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text(member.name)
+                                    .font(.title2.bold())
+                                Text("\(member.title), \(member.company)")
+                                    .font(.subheadline)
+                                    .foregroundStyle(AppTheme.muted)
+                            }
+                        }
+
+                        Text(member.challenge)
+                            .foregroundStyle(AppTheme.ink.opacity(0.82))
+
+                        FlowLayout(items: member.labels.map(\.name))
+                    }
+                    .cardStyle()
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Coaching")
+                            .font(.headline)
+                        Text("Monthly 1:1 with Mark is part of the program. This will deep-link to Calendly when the integration is live.")
+                            .foregroundStyle(AppTheme.ink.opacity(0.82))
+
+                        Button {
+                        } label: {
+                            Label("Schedule with Mark", systemImage: "calendar.badge.plus")
+                                .font(.headline)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(AppTheme.oxblood)
+                                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        }
+                    }
+                    .cardStyle()
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Notifications")
+                            .font(.headline)
+
+                        ForEach(preferences) { preference in
+                            HStack(alignment: .center, spacing: 12) {
+                                Image(systemName: preference.isEnabled ? "checkmark.circle.fill" : "circle")
+                                    .foregroundStyle(preference.isEnabled ? AppTheme.navy : AppTheme.muted)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(preference.title)
+                                        .font(.subheadline.weight(.semibold))
+                                    Text(preference.channels)
+                                        .font(.caption)
+                                        .foregroundStyle(AppTheme.muted)
+                                }
+                                Spacer()
+                            }
+                        }
+                    }
+                    .cardStyle()
+                }
+                .padding(20)
+            }
+            .background(AppTheme.pageBackground)
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .background(AppTheme.navy.ignoresSafeArea())
+    }
+}

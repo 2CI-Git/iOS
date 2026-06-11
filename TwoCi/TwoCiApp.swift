@@ -4,8 +4,7 @@ import SwiftUI
 struct TwoCiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashGateView()
         }
     }
 }
-
