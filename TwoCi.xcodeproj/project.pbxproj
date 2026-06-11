@@ -22,6 +22,7 @@
 		1A2B3C4D5E6F708192A0B013 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A015 /* SplashView.swift */; };
 		1A2B3C4D5E6F708192A0B014 /* FeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A016 /* FeedDetailView.swift */; };
 		1A2B3C4D5E6F708192A0B015 /* ComposePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A017 /* ComposePostView.swift */; };
+		1A2B3C4D5E6F708192A0B016 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A018 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		1A2B3C4D5E6F708192A0A015 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A0A016 /* FeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailView.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A0A017 /* ComposePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposePostView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A018 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				1A2B3C4D5E6F708192A0A012 /* DirectoryView.swift */,
 				1A2B3C4D5E6F708192A0A013 /* CohortView.swift */,
 				1A2B3C4D5E6F708192A0A014 /* ProfileView.swift */,
+				1A2B3C4D5E6F708192A0A018 /* OnboardingView.swift */,
 				1A2B3C4D5E6F708192A0A015 /* SplashView.swift */,
 				1A2B3C4D5E6F708192A0A006 /* LaunchScreen.storyboard */,
 				1A2B3C4D5E6F708192A0A003 /* Assets.xcassets */,
@@ -176,6 +179,7 @@
 				1A2B3C4D5E6F708192A0B010 /* DirectoryView.swift in Sources */,
 				1A2B3C4D5E6F708192A0B011 /* CohortView.swift in Sources */,
 				1A2B3C4D5E6F708192A0B012 /* ProfileView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B016 /* OnboardingView.swift in Sources */,
 				1A2B3C4D5E6F708192A0B013 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

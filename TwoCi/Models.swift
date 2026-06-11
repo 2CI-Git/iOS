@@ -15,16 +15,16 @@ struct AffinityLabel: Identifiable, Hashable {
 
 struct Member: Identifiable, Hashable {
     let id: UUID
-    let name: String
+    var name: String
     let role: MemberRole
-    let title: String
-    let company: String
-    let city: String
+    var title: String
+    var company: String
+    var city: String
     let cohort: String
-    let function: String
-    let challenge: String
-    let labels: [AffinityLabel]
-    let email: String
+    var function: String
+    var challenge: String
+    var labels: [AffinityLabel]
+    var email: String
 }
 
 enum FeedPostKind: String {
@@ -66,5 +66,5 @@ struct NotificationPreference: Identifiable {
     let id: UUID
     let title: String
     let channels: String
-    let isEnabled: Bool
+    var isEnabled: Bool
 }
