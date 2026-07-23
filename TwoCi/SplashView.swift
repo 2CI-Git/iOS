@@ -18,6 +18,7 @@ struct SplashView: View {
 
 struct SplashGateView: View {
     @State private var isShowingSplash = true
+    @StateObject private var authManager = AuthManager()
 
     var body: some View {
         ZStack {
@@ -25,9 +26,24 @@ struct SplashGateView: View {
                 SplashView()
                     .transition(.opacity)
             } else {
-                ContentView()
-                    .transition(.opacity)
+                switch authManager.state {
+                case .checking:
+                    ProgressView()
+                        .tint(AppTheme.navy)
+                        .transition(.opacity)
+                case .signedOut:
+                    AuthView()
+                        .environmentObject(authManager)
+                        .transition(.opacity)
+                case .signedIn:
+                    ContentView()
+                        .environmentObject(authManager)
+                        .transition(.opacity)
+                }
             }
+        }
+        .onOpenURL { url in
+            authManager.handleAuthCallback(url)
         }
         .task {
             try? await Task.sleep(for: .seconds(1.2))
