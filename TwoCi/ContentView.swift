@@ -1,12 +1,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var authManager: AuthManager
     private let store: MockDataStore
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @State private var currentMember: Member
     @State private var members: [Member]
     @State private var preferences: [NotificationPreference]
     @State private var feedPosts: [FeedPost]
+    @State private var cohort: Cohort
+    @State private var isLoadingSupabaseData = false
+    @State private var dataSourceMessage: String?
 
     init() {
         let store = MockDataStore()
@@ -20,6 +24,7 @@ struct ContentView: View {
         _feedPosts = State(initialValue: store.posts().map { post in
             post.author.id == currentMember.id ? post.withAuthor(currentMember) : post
         })
+        _cohort = State(initialValue: store.currentCohort())
     }
 
     var body: some View {
@@ -37,6 +42,9 @@ struct ContentView: View {
                 }
             }
         }
+        .task(id: authManager.accessToken) {
+            await loadSupabaseDataIfAvailable()
+        }
         .preferredColorScheme(.light)
     }
 
@@ -52,7 +60,7 @@ struct ContentView: View {
                     Label("Directory", systemImage: "person.2.fill")
                 }
 
-            CohortView(cohort: store.currentCohort())
+            CohortView(cohort: cohort)
                 .tabItem {
                     Label("Cohort", systemImage: "circle.hexagongrid.fill")
                 }
@@ -63,6 +71,15 @@ struct ContentView: View {
                 }
         }
         .tint(AppTheme.navy)
+        .overlay(alignment: .top) {
+            if isLoadingSupabaseData {
+                ProgressView()
+                    .padding(10)
+                    .background(.thinMaterial)
+                    .clipShape(Capsule())
+                    .padding(.top, 8)
+            }
+        }
     }
 
     private func applyCurrentMember() {
@@ -73,6 +90,30 @@ struct ContentView: View {
         feedPosts = feedPosts.map { post in
             post.author.id == currentMember.id ? post.withAuthor(currentMember) : post
         }
+    }
+
+    private func loadSupabaseDataIfAvailable() async {
+        guard let accessToken = authManager.accessToken, let userID = authManager.userID else {
+            dataSourceMessage = "Using demo data"
+            return
+        }
+
+        isLoadingSupabaseData = true
+
+        do {
+            let data = try await SupabaseDataService(accessToken: accessToken, userID: userID).loadAppData()
+            currentMember = data.currentMember
+            members = data.members
+            preferences = data.preferences
+            feedPosts = data.posts
+            cohort = data.cohort
+            hasCompletedOnboarding = true
+            dataSourceMessage = "Using Supabase data"
+        } catch {
+            dataSourceMessage = "Using demo data"
+        }
+
+        isLoadingSupabaseData = false
     }
 }
 

@@ -97,6 +97,7 @@ struct ProfileView: View {
 
 private struct ProfileSettingsView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var authManager: AuthManager
     @Binding var preferences: [NotificationPreference]
 
     var body: some View {
@@ -118,6 +119,15 @@ private struct ProfileSettingsView: View {
                     }
                 } header: {
                     Text("Notifications")
+                }
+
+                Section {
+                    Button(role: .destructive) {
+                        authManager.signOut()
+                        dismiss()
+                    } label: {
+                        Label("Sign out", systemImage: "rectangle.portrait.and.arrow.right")
+                    }
                 }
             }
             .navigationTitle("Settings")

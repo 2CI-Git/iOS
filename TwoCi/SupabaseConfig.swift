@@ -11,4 +11,12 @@ enum SupabaseConfig {
             "Content-Type": "application/json"
         ]
     }
+
+    static func authenticatedHeaders(accessToken: String) -> [String: String] {
+        [
+            "apikey": publishableKey,
+            "Authorization": "Bearer \(accessToken)",
+            "Content-Type": "application/json"
+        ]
+    }
 }
