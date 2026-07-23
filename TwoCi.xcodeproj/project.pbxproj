@@ -26,6 +26,7 @@
 		1A2B3C4D5E6F708192A0B017 /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A019 /* SupabaseConfig.swift */; };
 		1A2B3C4D5E6F708192A0B018 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A020 /* AuthManager.swift */; };
 		1A2B3C4D5E6F708192A0B019 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A021 /* AuthView.swift */; };
+		1A2B3C4D5E6F708192A0B020 /* SupabaseDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B3C4D5E6F708192A0A022 /* SupabaseDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		1A2B3C4D5E6F708192A0A019 /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A0A020 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		1A2B3C4D5E6F708192A0A021 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		1A2B3C4D5E6F708192A0A022 /* SupabaseDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				1A2B3C4D5E6F708192A0A019 /* SupabaseConfig.swift */,
 				1A2B3C4D5E6F708192A0A020 /* AuthManager.swift */,
 				1A2B3C4D5E6F708192A0A021 /* AuthView.swift */,
+				1A2B3C4D5E6F708192A0A022 /* SupabaseDataService.swift */,
 				1A2B3C4D5E6F708192A0A008 /* Models.swift */,
 				1A2B3C4D5E6F708192A0A009 /* MockServices.swift */,
 				1A2B3C4D5E6F708192A0A010 /* Components.swift */,
@@ -182,6 +185,7 @@
 				1A2B3C4D5E6F708192A0B017 /* SupabaseConfig.swift in Sources */,
 				1A2B3C4D5E6F708192A0B018 /* AuthManager.swift in Sources */,
 				1A2B3C4D5E6F708192A0B019 /* AuthView.swift in Sources */,
+				1A2B3C4D5E6F708192A0B020 /* SupabaseDataService.swift in Sources */,
 				1A2B3C4D5E6F708192A0B006 /* Models.swift in Sources */,
 				1A2B3C4D5E6F708192A0B007 /* MockServices.swift in Sources */,
 				1A2B3C4D5E6F708192A0B008 /* Components.swift in Sources */,

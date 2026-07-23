@@ -23,6 +23,23 @@ final class AuthManager: ObservableObject {
     private let callbackURL = "twoci://auth-callback"
     private var session: SupabaseAuthSession?
 
+    var accessToken: String? {
+        session?.accessToken
+    }
+
+    var userID: UUID? {
+        guard
+            let accessToken,
+            let payload = accessToken.split(separator: ".").dropFirst().first,
+            let data = Data(base64URLEncoded: String(payload)),
+            let claims = try? JSONDecoder().decode(JWTClaims.self, from: data)
+        else {
+            return nil
+        }
+
+        return UUID(uuidString: claims.sub)
+    }
+
     init() {
         restoreSession()
     }
@@ -199,5 +216,24 @@ private enum AuthClientError: LocalizedError {
         case .requestFailed(let statusCode):
             "Supabase could not send the sign-in link. Status code: \(statusCode)."
         }
+    }
+}
+
+private struct JWTClaims: Decodable {
+    let sub: String
+}
+
+private extension Data {
+    init?(base64URLEncoded value: String) {
+        var base64 = value
+            .replacingOccurrences(of: "-", with: "+")
+            .replacingOccurrences(of: "_", with: "/")
+
+        let padding = base64.count % 4
+        if padding > 0 {
+            base64.append(String(repeating: "=", count: 4 - padding))
+        }
+
+        self.init(base64Encoded: base64)
     }
 }
