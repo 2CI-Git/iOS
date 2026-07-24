@@ -110,17 +110,17 @@ struct MemberCard: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text(member.name)
-                        .font(.headline)
+                        .font(.subheadline.weight(.semibold))
                         .foregroundStyle(AppTheme.ink)
                     Spacer()
                     RoleBadge(role: member.role)
                 }
 
                 Text("\(member.title), \(member.company)")
-                    .font(.subheadline)
+                    .font(.callout)
                     .foregroundStyle(AppTheme.muted)
 
-                Text("\(member.city) · \(member.cohort)")
+                Text("\(displayPlace(member.city)) · \(displayPlace(member.cohort))")
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(AppTheme.navy)
 
@@ -143,11 +143,11 @@ struct MemberDetailView: View {
 
                         VStack(alignment: .leading, spacing: 8) {
                             Text(member.name)
-                                .font(.title.bold())
+                                .font(.title3.bold())
                                 .foregroundStyle(AppTheme.ink)
 
                             Text("\(member.title), \(member.company)")
-                                .font(.headline)
+                                .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(AppTheme.ink.opacity(0.82))
 
                             RoleBadge(role: member.role)
@@ -161,8 +161,8 @@ struct MemberDetailView: View {
                         .font(.headline)
 
                     ProfileFactRow(label: "Company", value: member.company)
-                    ProfileFactRow(label: "City", value: member.city)
-                    ProfileFactRow(label: "Cohort", value: member.cohort)
+                    ProfileFactRow(label: "City", value: displayPlace(member.city))
+                    ProfileFactRow(label: "Cohort", value: displayPlace(member.cohort))
                     ProfileFactRow(label: "Function", value: member.function)
                 }
                 .cardStyle()
@@ -172,6 +172,7 @@ struct MemberDetailView: View {
                         .font(.headline)
 
                     Text(member.challenge)
+                        .font(.callout)
                         .foregroundStyle(AppTheme.ink.opacity(0.82))
 
                     FlowLayout(items: member.labels.map(\.name))

@@ -19,14 +19,15 @@ struct ProfileView: View {
                             AvatarView(member: member, size: 72)
                             VStack(alignment: .leading, spacing: 6) {
                                 Text(member.name)
-                                    .font(.title2.bold())
+                                    .font(.title3.bold())
                                 Text("\(member.title), \(member.company)")
-                                    .font(.subheadline)
+                                    .font(.callout)
                                     .foregroundStyle(AppTheme.muted)
                             }
                         }
 
                         Text(member.challenge)
+                            .font(.callout)
                             .foregroundStyle(AppTheme.ink.opacity(0.82))
 
                         FlowLayout(items: member.labels.map(\.name))
@@ -42,7 +43,7 @@ struct ProfileView: View {
                         Button {
                         } label: {
                             Label("Schedule with Mark", systemImage: "calendar.badge.plus")
-                                .font(.headline)
+                                .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 14)

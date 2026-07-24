@@ -15,7 +15,7 @@ struct FeedDetailView: View {
                         VStack(alignment: .leading, spacing: 3) {
                             HStack(spacing: 8) {
                                 Text(post.author.name)
-                                    .font(.headline)
+                                    .font(.subheadline.weight(.semibold))
                                     .foregroundStyle(AppTheme.ink)
 
                                 RoleBadge(role: post.author.role)
@@ -31,11 +31,11 @@ struct FeedDetailView: View {
 
                     VStack(alignment: .leading, spacing: 10) {
                         Text(post.title)
-                            .font(.title2.bold())
+                            .font(.title3.bold())
                             .foregroundStyle(AppTheme.ink)
 
                         Text(post.body)
-                            .font(.body)
+                            .font(.callout)
                             .lineSpacing(3)
                             .foregroundStyle(AppTheme.ink.opacity(0.84))
                             .fixedSize(horizontal: false, vertical: true)

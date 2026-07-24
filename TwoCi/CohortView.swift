@@ -14,7 +14,7 @@ struct CohortView: View {
 
                     VStack(alignment: .leading, spacing: 14) {
                         HStack {
-                            Label(cohort.city, systemImage: "mappin.and.ellipse")
+                            Label(displayPlace(cohort.city), systemImage: "mappin.and.ellipse")
                             Spacer()
                             Text(cohort.status)
                                 .font(.caption.weight(.bold))
@@ -28,7 +28,7 @@ struct CohortView: View {
                         .foregroundStyle(AppTheme.navy)
 
                         Text(cohort.scenario)
-                            .font(.title2.bold())
+                            .font(.title3.bold())
                             .foregroundStyle(AppTheme.ink)
 
                         Text(cohort.dates)
@@ -86,7 +86,7 @@ private struct StatTile: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(value)
-                .font(.title.bold())
+                .font(.title3.bold())
             Text(label)
                 .font(.caption.weight(.semibold))
         }

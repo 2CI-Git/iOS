@@ -7,7 +7,7 @@ struct BrandHeader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(.largeTitle.bold())
+                .font(.title.bold())
                 .foregroundStyle(AppTheme.ink)
 
             Text(subtitle)
@@ -60,15 +60,41 @@ struct AvatarView: View {
             .joined()
     }
 
+    private var imageName: String? {
+        switch member.email.lowercased() {
+        case "ryanblakewilson@gmail.com":
+            return "RyanProfile"
+        case "mark@2ci.com":
+            return "MarkProfile"
+        default:
+            return nil
+        }
+    }
+
     var body: some View {
         ZStack {
-            Circle()
-                .fill(member.role == .council ? AppTheme.oxblood : AppTheme.navy)
+            if let imageName {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                Circle()
+                    .fill(member.role == .council ? AppTheme.oxblood : AppTheme.navy)
 
-            Text(initials)
-                .font(.system(size: size * 0.34, weight: .bold))
-                .foregroundStyle(.white)
+                Text(initials)
+                    .font(.system(size: size * 0.34, weight: .bold))
+                    .foregroundStyle(.white)
+            }
         }
         .frame(width: size, height: size)
+        .clipShape(Circle())
+        .overlay(
+            Circle()
+                .stroke(Color.white.opacity(0.88), lineWidth: max(1, size * 0.035))
+        )
     }
+}
+
+func displayPlace(_ value: String) -> String {
+    value.localizedCaseInsensitiveContains("scottsdale") ? "🌵 \(value)" : value
 }

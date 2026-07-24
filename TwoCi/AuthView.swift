@@ -21,7 +21,7 @@ struct AuthView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Welcome to 2CI")
-                            .font(.largeTitle.bold())
+                            .font(.title.bold())
                             .foregroundStyle(.white)
 
                         Text("Sign in with the email tied to your invite.")
