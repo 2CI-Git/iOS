@@ -15,12 +15,12 @@ protocol CohortService {
 
 struct MockDataStore: MemberService, FeedService, CohortService {
     let labels: [AffinityLabel] = [
-        AffinityLabel(id: UUID(), name: "Scaling Challenges"),
-        AffinityLabel(id: UUID(), name: "Sales"),
-        AffinityLabel(id: UUID(), name: "Denver"),
-        AffinityLabel(id: UUID(), name: "Series B"),
-        AffinityLabel(id: UUID(), name: "People Leadership"),
+        AffinityLabel(id: UUID(), name: "Design"),
+        AffinityLabel(id: UUID(), name: "AI"),
+        AffinityLabel(id: UUID(), name: "Seattle"),
         AffinityLabel(id: UUID(), name: "Product"),
+        AffinityLabel(id: UUID(), name: "People Leadership"),
+        AffinityLabel(id: UUID(), name: "Sales"),
         AffinityLabel(id: UUID(), name: "Operations")
     ]
 
@@ -47,14 +47,14 @@ struct MockDataStore: MemberService, FeedService, CohortService {
                 id: UUID(),
                 name: "Ryan Wilson",
                 role: .member,
-                title: "Design Engineer",
-                company: "Telos",
-                city: "Scottsdale",
+                title: "Designer",
+                company: "Noda AI",
+                city: "Seattle, WA",
                 cohort: "Scottsdale 2026",
-                function: "Product",
-                challenge: "Building high-trust AI products without hollow automation",
-                labels: [labels[0], labels[3], labels[5]],
-                email: "ryan@example.com"
+                function: "Design",
+                challenge: "Shaping useful AI experiences that preserve trust, judgment, and human context.",
+                labels: [labels[0], labels[1], labels[2], labels[3]],
+                email: "ryanblakewilson@gmail.com"
             ),
             Member(
                 id: UUID(),
@@ -66,7 +66,7 @@ struct MockDataStore: MemberService, FeedService, CohortService {
                 cohort: "Denver 2026",
                 function: "Operations",
                 challenge: "Getting cross-functional teams aligned during a reorg",
-                labels: [labels[0], labels[3], labels[6]],
+                labels: [labels[3], labels[6]],
                 email: "amber@example.com"
             ),
             Member(
@@ -79,7 +79,7 @@ struct MockDataStore: MemberService, FeedService, CohortService {
                 cohort: "Denver 2026",
                 function: "Sales",
                 challenge: "Moving from founder-led sales into a repeatable motion",
-                labels: [labels[1], labels[2], labels[3]],
+                labels: [labels[5], labels[2], labels[3]],
                 email: "jamie@example.com"
             ),
             Member(
@@ -144,6 +144,22 @@ struct MockDataStore: MemberService, FeedService, CohortService {
         ]
 
         return [
+            FeedPost(
+                id: UUID(),
+                author: roster[1],
+                kind: .update,
+                title: "Kicking off Scottsdale 2026",
+                body: "Excited to start shaping the 2CI app around the real Scottsdale 2026 member experience.",
+                timestamp: "Today",
+                replies: [
+                    FeedReply(
+                        id: UUID(),
+                        author: roster[1],
+                        body: "First real Supabase-backed reply is alive.",
+                        timestamp: "Today"
+                    )
+                ]
+            ),
             FeedPost(
                 id: UUID(),
                 author: roster[0],

@@ -52,23 +52,27 @@ struct ContentView: View {
         TabView {
             FeedView(posts: $feedPosts, currentMember: currentMember)
                 .tabItem {
-                    Label("Feed", systemImage: "house.fill")
+                    Image(systemName: "house.fill")
                 }
+                .accessibilityLabel("Feed")
 
             DirectoryView(members: members)
                 .tabItem {
-                    Label("Directory", systemImage: "person.2.fill")
+                    Image(systemName: "person.2.fill")
                 }
+                .accessibilityLabel("Directory")
 
             CohortView(cohort: cohort)
                 .tabItem {
-                    Label("Cohort", systemImage: "circle.hexagongrid.fill")
+                    Image(systemName: "circle.hexagongrid.fill")
                 }
+                .accessibilityLabel("Cohort")
 
             ProfileView(member: currentMember, preferences: $preferences)
                 .tabItem {
-                    Label("Profile", systemImage: "person.crop.circle.fill")
+                    Image(systemName: "person.crop.circle.fill")
                 }
+                .accessibilityLabel("Profile")
         }
         .tint(AppTheme.navy)
         .overlay(alignment: .top) {

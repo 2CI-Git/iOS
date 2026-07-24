@@ -9,11 +9,6 @@ struct FeedView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    BrandHeader(
-                        title: "Community",
-                        subtitle: "The front door for what your people are thinking through."
-                    )
-
                     ForEach($posts) { $post in
                         NavigationLink {
                             FeedDetailView(post: $post, currentMember: currentMember)
@@ -27,7 +22,17 @@ struct FeedView: View {
             }
             .background(AppTheme.pageBackground)
             .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(AppTheme.pageBackground, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("NavWordmark")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 94, height: 40)
+                        .accessibilityLabel("2CI")
+                }
+
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         isShowingComposer = true
@@ -43,7 +48,7 @@ struct FeedView: View {
                 }
             }
         }
-        .background(AppTheme.navy.ignoresSafeArea())
+        .background(AppTheme.pageBackground.ignoresSafeArea())
     }
 }
 
@@ -58,7 +63,7 @@ private struct FeedPostCard: View {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 8) {
                         Text(post.author.name)
-                            .font(.headline)
+                            .font(.subheadline.weight(.semibold))
                             .foregroundStyle(AppTheme.ink)
 
                         RoleBadge(role: post.author.role)
@@ -74,11 +79,11 @@ private struct FeedPostCard: View {
 
             VStack(alignment: .leading, spacing: 8) {
                 Text(post.title)
-                    .font(.title3.bold())
+                    .font(.headline)
                     .foregroundStyle(AppTheme.ink)
 
                 Text(post.body)
-                    .font(.body)
+                    .font(.callout)
                     .foregroundStyle(AppTheme.ink.opacity(0.82))
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -89,7 +94,7 @@ private struct FeedPostCard: View {
                 Spacer()
                 Image(systemName: "arrow.up.forward")
             }
-            .font(.subheadline.weight(.semibold))
+            .font(.callout.weight(.semibold))
             .foregroundStyle(AppTheme.navy)
             .padding(.top, 4)
         }

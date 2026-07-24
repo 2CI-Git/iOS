@@ -21,7 +21,7 @@ struct OnboardingView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
                         Text(stepTitles[step])
-                            .font(.largeTitle.bold())
+                            .font(.title.bold())
                             .foregroundStyle(AppTheme.ink)
 
                         currentStep
