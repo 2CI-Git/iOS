@@ -98,7 +98,12 @@ struct SupabaseDataService {
             members: members,
             posts: posts,
             cohort: cohort,
-            preferences: preferences.isEmpty ? MockDataStore().notificationPreferences() : preferences
+            // Returned as-is, even when empty. This previously substituted
+            // MockDataStore().notificationPreferences(), which made a member
+            // with no preference rows indistinguishable from one with real
+            // ones — and hid the fact that the schema had no insert policy
+            // for this table at all.
+            preferences: preferences
         )
     }
 
@@ -121,7 +126,16 @@ struct SupabaseDataService {
         }
 
         guard (200..<300).contains(httpResponse.statusCode) else {
-            throw SupabaseDataError.requestFailed(statusCode: httpResponse.statusCode)
+            // Supabase puts the useful part in the body: RLS denials, bad
+            // filters, expired tokens. Carrying it means the banner and the
+            // console say what actually went wrong instead of just a number.
+            let body = String(data: data, encoding: .utf8)?
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            throw SupabaseDataError.requestFailed(
+                path: path,
+                statusCode: httpResponse.statusCode,
+                body: (body?.isEmpty == false) ? body : nil
+            )
         }
 
         let decoder = JSONDecoder()
@@ -286,7 +300,7 @@ private extension MemberRole {
 private enum SupabaseDataError: LocalizedError {
     case invalidURL
     case invalidResponse
-    case requestFailed(statusCode: Int)
+    case requestFailed(path: String, statusCode: Int, body: String?)
     case currentMemberMissing
 
     var errorDescription: String? {
@@ -295,10 +309,14 @@ private enum SupabaseDataError: LocalizedError {
             "Could not build a Supabase URL."
         case .invalidResponse:
             "Supabase returned an invalid response."
-        case .requestFailed(let statusCode):
-            "Supabase data request failed with status code \(statusCode)."
+        case .requestFailed(let path, let statusCode, let body):
+            if let body {
+                "\(path) failed (\(statusCode)): \(body)"
+            } else {
+                "\(path) failed (\(statusCode))."
+            }
         case .currentMemberMissing:
-            "Could not find the signed-in member profile."
+            "Signed in, but no member_profiles row is linked to this user."
         }
     }
 }
